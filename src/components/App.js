@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CreateAnimes from './CreateAnime';
 import Header from './Header';
 import { Route, Routes } from 'react-router-dom';

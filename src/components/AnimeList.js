@@ -1,5 +1,4 @@
 import React from 'react';
-import Topdiez from './Anime';
 import { useQuery, gql } from '@apollo/client';
 import "../styles/Mostrar.css"
 

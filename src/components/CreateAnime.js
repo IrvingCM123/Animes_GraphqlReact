@@ -158,7 +158,7 @@ const CreateMangas = () => {
           <li>Número Telefonico: <br></br> <p>+52 272 259 4250</p></li>
           <li>Correo Electronico: <br></br> <p> zS20006735@estudiantes.uv.mx</p></li>
           <li>Matricula <br></br> <p>zS20006735 </p> </li>
-          <img src='./img/waifu1.png'></img>
+          <img src='./img/waifu1.png' alt='Hola'></img>
         </ul>
       </div>
     </div>

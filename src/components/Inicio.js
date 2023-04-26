@@ -6,7 +6,7 @@ export const Imagen = () => {
   return (
     <div class="imagen">
       <h2>¡Bienvenidos!</h2>
-      <h2></h2>
+      <h2>.</h2>
       <h2>¡Les deseamos un buen día!</h2>
     </div>
 
