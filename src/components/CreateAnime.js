@@ -8,7 +8,7 @@ mutation PostMutation(
   $generomanga: String!
   $descripcionmanga: String!
   $preciomanga: Int!
-  $escritormanga: String!
+  $escritormanga: String!1
   $volumenesmanga: Int!
   $capitulosmanga: Int!
   $ilustradormanga: String!
