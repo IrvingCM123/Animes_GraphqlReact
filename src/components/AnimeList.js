@@ -65,7 +65,7 @@ const AnimeList = () => {
               </div>
             </div>
           </div>
-
+  
         )
       })}
 
