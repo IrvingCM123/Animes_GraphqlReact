@@ -4,7 +4,7 @@ class List {
 
   async getDaVinci(data) {
     const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
     const openai = new OpenAIApi(configuration);
     console.log(configuration);

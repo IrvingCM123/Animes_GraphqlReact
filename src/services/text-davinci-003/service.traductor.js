@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 class Traductor {
     async getTraduccion(data) {
         const configuration = new Configuration({
-            apiKey: "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",
+            apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         console.log(configuration);
