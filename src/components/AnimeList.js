@@ -17,6 +17,7 @@ query {
     ilustradormanga
     editorialmanga
     clasificacionedadmanga
+    comentarios
 }
 }
 `
@@ -61,6 +62,22 @@ const AnimeList = () => {
 
                 <div className='subtitle'> Precio:
                   <span className='texto'> {top.preciomanga} </span>
+                </div>
+
+                <div className='subtitle'> Volumen:
+                  <span className='texto'> {top.volumenesmanga} </span>
+                </div>
+
+                <div className='subtitle'> Capitulos:
+                  <span className='texto'> {top.capitulos} </span>
+                </div>
+
+                <div className='subtitle'> Editorial:
+                  <span className='texto'> {top.editorial} </span>
+                </div>
+
+                <div className='subtitle'> Comentarios:
+                  <span className='texto'> {top.comentarios} </span>
                 </div>
               </div>
             </div>
