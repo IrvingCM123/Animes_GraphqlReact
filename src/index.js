@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import './styles/index.css';
+import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { setContext } from '@apollo/client/link/context';
+import { AUTH_TOKEN } from './components/constants';
+import './components/i18nextConf';
+
 import {
   ApolloProvider,
   ApolloClient,
@@ -12,25 +17,40 @@ import {
 
 // 2
 const httpLink = createHttpLink({
-  uri: 'https://irvingcm123-irvingcm123.cloud.okteto.net/graphql/'
+  uri: 'http://localhost:8000/graphql/'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem(AUTH_TOKEN);
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `JWT ${token}` : ''
+    }
+  };
 });
 
 // 3
 const client = new ApolloClient({
-  link: httpLink,
+  //link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 // 4
-ReactDOM.render(
+root.render(
   <BrowserRouter>
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
+    <React.StrictMode>
       <App />
-    </ApolloProvider>
-  </BrowserRouter>,
-  document.getElementById('root')
+    </React.StrictMode>
+  </ApolloProvider>
+  </BrowserRouter>
 );
 
+reportWebVitals();
 
 
 
