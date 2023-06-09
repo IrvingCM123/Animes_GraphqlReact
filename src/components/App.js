@@ -35,8 +35,7 @@ const App = () => {
           <Route path="/imageniaedit" element={<ImgIE/>} />
           <Route path="/emojis" element={<EmojiComponent/>} />
           <Route path="/traductor" element={<TraductorComponent/>} />
-          <Route path="/list" element={<ListFrontend/>} />
-
+          <Route path="/listaa" element={<ListFrontend/>} />
         </Routes>
       </div>	
   );

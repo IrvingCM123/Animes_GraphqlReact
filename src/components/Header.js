@@ -67,12 +67,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/list" className="no-underline black" >
+              <Link to="/listaa" className="no-underline black" >
                 lista
               </Link>
             </li>
 
-            
+
             <li>
               <Link to="/search" className="ml1 no-underline black">
                 {t("Buscar")}
