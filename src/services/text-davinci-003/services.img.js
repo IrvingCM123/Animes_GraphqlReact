@@ -4,7 +4,7 @@ class Serviceimg {
 
   async getimg(data) {
     const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
     const openai = new OpenAIApi(configuration);
     if (!configuration.apiKey) {
