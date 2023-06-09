@@ -60,7 +60,6 @@ class ServiceChat {
                 }
             }
         }
-        return;
     }
 
     generatePrompt(chat) {
