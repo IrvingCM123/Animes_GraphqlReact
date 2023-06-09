@@ -1,52 +1,57 @@
 import React, { useState } from 'react';
-import ListBackend from './../services/text-davinci-003/service.list'; // Importa el backend
+import List from '../services/text-davinci-003/service.list'
 
+console.log("dadw")
+console.log("dadw")
 function ListFrontend() {
+  console.log("dadw")
+
   const [animal, setAnimal] = useState('');
-  const [result, setResult] = useState('');
-  const [error, setError] = useState('');
+  const [response, setResponse] = useState('');
+  console.log("dadw")
+
+  const handleAnimalChange = (e) => {
+    setAnimal(e.target.value);
+  };
+  console.log("dadw")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("dadw")
 
     // Verifica si se ingresó un animal válido
     if (animal.trim().length === 0) {
-      setError('Please enter a valid animal');
       return;
     }
 
     try {
-      const response = await ListBackend.getDaVinci({ animal });
+      console.log("dadw")
+      const response = await List.getDaVinci({ animal });
 
       if (response.status === 200) {
-        setResult(response.result);
-        setError('');
+        setResponse(response.result);
       } else {
-        setResult('');
-        setError(response.error.message);
+        console.error(response.error);
       }
     } catch (error) {
       console.error('Error:', error.message);
-      setError('An error occurred during your request.');
-      setResult('');
     }
   };
 
   return (
     <div>
-      <h1>Lista de equipos</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Animal:
-          <input type="text" value={animal} onChange={(e) => setAnimal(e.target.value)} />
+          <input type="text" value={animal} onChange={handleAnimalChange} />
+
         </label>
         <button type="submit">Generate List</button>
       </form>
-      {error && <p>Error: {error}</p>}
-      {result && (
+      {response && (
         <div>
           <h2>Generated List:</h2>
-          <p>{result}</p>
+          <p>{response}</p>
         </div>
       )}
     </div>
