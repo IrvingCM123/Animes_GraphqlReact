@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+
 import "../styles/GuardarInfo.css"
 
 const CREATE_MANGAS_MUTATION = gql`
@@ -14,8 +16,9 @@ mutation PostMutation(
   $ilustradormanga: String!
   $editorialmanga: String!
   $clasificacionedadmanga: Int!
+  $comentarios: String!
   ) {
-    createManga(titulomanga: $titulomanga, generomanga: $generomanga, descripcionmanga: $descripcionmanga, preciomanga: $preciomanga, escritormanga: $escritormanga, volumenesmanga: $volumenesmanga, capitulosmanga: $capitulosmanga, ilustradormanga: $ilustradormanga, editorialmanga: $editorialmanga, clasificacionedadmanga: $clasificacionedadmanga) {
+    createManga(titulomanga: $titulomanga, generomanga: $generomanga, descripcionmanga: $descripcionmanga, preciomanga: $preciomanga, escritormanga: $escritormanga, volumenesmanga: $volumenesmanga, capitulosmanga: $capitulosmanga, ilustradormanga: $ilustradormanga, editorialmanga: $editorialmanga, clasificacionedadmanga: $clasificacionedadmanga, comentarios: $comentarios) {
       id
       titulomanga
       generomanga
@@ -27,12 +30,14 @@ mutation PostMutation(
       ilustradormanga
       editorialmanga
       clasificacionedadmanga
+      comentarios
     }
   }
 `;
 
 
 const CreateMangas = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     id: '',
     titulomanga: '',
@@ -45,6 +50,7 @@ const CreateMangas = () => {
     ilustradormanga: '',
     editorialmanga: '',
     clasificacionedadmanga: 0,
+    comentarios: '',
   });
 
   const [CreateManga] = useMutation(CREATE_MANGAS_MUTATION, {
@@ -59,7 +65,9 @@ const CreateMangas = () => {
       ilustradormanga: formState.ilustradormanga,
       editorialmanga: formState.editorialmanga,
       clasificacionedadmanga: formState.clasificacionedadmanga,
-    }
+      comentarios: formState.comentarios
+    },
+    onCompleted: () => navigate('/')
   });
 
   return (
@@ -80,6 +88,7 @@ const CreateMangas = () => {
         <p class="Espacio Espacio2">Ilustrador: </p>
         <p class="Espacio Espacio2">Editorial: </p>
         <p class="Espacio Espacio2">Clasificacion de edad: </p>
+        <p class="Espacio Espacio2">Comentarios:</p>
       </div>
 
       <div id="Formulario-Rellenar" >
@@ -146,9 +155,17 @@ const CreateMangas = () => {
               type="number" placeholder="Clasificacion de edad recomendada para lectura del manga" />
           </div>
 
+          <div className="Espacio" >
+            <input className="Respuesta" value={formState.comentarios} onChange={(e) =>
+              setFormState({ ...formState, comentarios: e.target.value })}
+              type="text" placeholder="Comentarios" />
+          </div>
+
           <div id="Formulario-Boton">
               <input type="submit" name="Mensaje" value="Enviar" class="Boton"></input>
           </div>
+
+          
         </form>
       </div>
 
